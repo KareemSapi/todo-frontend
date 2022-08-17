@@ -30,6 +30,9 @@ export class AppComponent {
       done: false
     });
   }
-  
 
+  remove(item: any) {
+    this.allItems.splice(this.allItems.indexOf(item), 1);
+  }  
+  
 }
