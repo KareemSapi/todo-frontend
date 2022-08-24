@@ -8,15 +8,12 @@
 <input
   #newItem
   placeholder="add an item"
-  (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+  (keyup.enter)="addNewItem(newItem.value); newItem.value = ''"
   class="lg-text-input"
   id="addItemInput"
 />
 
-<button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
-
-<!-- <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
- -->
+<button class="btn-primary" (click)="addNewItem(newItem.value)">Add</button>
 
   <!-- Buttons that show all, still to do, or done items on click -->
   <div class="btn-wrapper">

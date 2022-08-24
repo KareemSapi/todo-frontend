@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
+import { ItemsApi } from './item.api';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { ItemComponent } from './item/item.component';
     ItemComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ItemsApi],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

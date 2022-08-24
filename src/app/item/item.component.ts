@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from "../item";
+import { ItemsApi } from '../item.api';
 
 
 @Component({
@@ -17,10 +18,13 @@ export class ItemComponent {
   newItem!: string;
   @Output() remove = new EventEmitter<Item>();
 
+  //update
   saveItem(description: string) {
     if (!description) return;
     this.editable = false;
     this.item.description = description;
   }
+
+  //delete
 }
 
