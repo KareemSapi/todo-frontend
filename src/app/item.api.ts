@@ -17,7 +17,16 @@ export class ItemsApi {
         return this.http.get<Item[]>(`${this.itemsUrl}/all`);
     }
 
-    addNewItem(description: string){
-        return this.http.post<Item>(`${this.itemsUrl}/add`, description);
+    addNewItem(description: any){ 
+        //console.log(item, item.get("description"))
+        return this.http.post<Item>(`${this.itemsUrl}/add/${description}`, null);
+    }
+
+    updateItem(item: any){
+        return this.http.put<Item>(`${this.itemsUrl}/update/${item.get('id')}`, item);
+    }
+
+    deleteItem(id: Number){
+        return this.http.delete<Item>(`${this.itemsUrl}/delete/${id}`);
     }
 }

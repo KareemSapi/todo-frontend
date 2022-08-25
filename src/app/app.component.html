@@ -1,19 +1,25 @@
 <div class="main">
   <h1>My To Do List</h1>
-  <!--
-    <h2>What would you like to do today?</h2>
-   -->
-  <label for="addItemInput">What would you like to do today?</label>
+
+<form
+[formGroup]="itemsForm"
+(submit)="addNewItem()"
+aria-labelledby="itemsForm"
+autocomplete="off"
+>
+<label for="addItemInput">What would you like to do today?</label>
 
 <input
   #newItem
   placeholder="add an item"
-  (keyup.enter)="addNewItem(newItem.value); newItem.value = ''"
+  (keyup.enter)="addNewItem(); newItem.value = ''"
   class="lg-text-input"
-  id="addItemInput"
+  id="description"
+  formControlName="description"
 />
 
-<button class="btn-primary" (click)="addNewItem(newItem.value)">Add</button>
+<button class="btn-primary">Add</button>
+</form>
 
   <!-- Buttons that show all, still to do, or done items on click -->
   <div class="btn-wrapper">

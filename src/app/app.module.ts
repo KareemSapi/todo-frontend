@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ItemComponent } from './item/item.component';
 import { ItemsApi } from './item.api';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ItemsApi],
   bootstrap: [AppComponent]
