@@ -10,7 +10,7 @@ export class ItemsApi {
     private itemsUrl: string;
 
     constructor(private http: HttpClient){
-        this.itemsUrl = "http://localhost:8080/to-do"
+        this.itemsUrl = "" //add backend path/url
     }
 
     getAllItems(){
