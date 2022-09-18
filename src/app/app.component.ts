@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
 
   get items() {
     if (this.filter === 'all') {
-      return this.allItems;
+      return this.allItems.reverse();
     }
     return this.allItems.filter((item) => this.filter === 'done' ? item.done : !item.done);
   }
@@ -56,7 +56,20 @@ export class AppComponent implements OnInit {
   */
 
   remove(item: any) {
-    this.allItems.splice(this.allItems.indexOf(item), 1);
+    
+    var itemId = this.allItems[this.allItems.indexOf(item)].id;
+    //console.log(itemId, this.allItems);
+
+    this.item.deleteItem(itemId)
+      .subscribe(res => {
+        if(!res){
+          setTimeout(() => {
+            return "Something went wrong! Try again later."
+          }, 3000);
+        }
+          this.allItems.splice(this.allItems.indexOf(item), 1);
+        
+      });     
   } 
   
   //create new item
@@ -65,13 +78,15 @@ export class AppComponent implements OnInit {
     if(this.itemsForm.invalid){
       return;
     }
-
+    
+    /*
     const postData = new FormData();
     postData.append("description", this.itemsForm.value.description);
 
     const data  = JSON.stringify({
       description: this.itemsForm.value.description
     });
+    */
 
     this.item.addNewItem(this.itemsForm.value.description)
      .subscribe(res => {
@@ -79,9 +94,10 @@ export class AppComponent implements OnInit {
         setTimeout(() => {
           return "Something went wrong! Try again later."
         }, 3000);
-      }else{
-        this.itemsForm.reset();
       }
+        this.itemsForm.reset();
+        this.item.getAllItems().subscribe(res => this.allItems = res.reverse());
+      
      });
   }
   
